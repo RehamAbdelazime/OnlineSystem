@@ -1,0 +1,17 @@
+<div class="container my-5">
+  <h1 class="mb-3">Add Category</h1>
+
+  <button type="button" class="btn btn-primary mb-3" routerLink="/category" routerLinkActive="active" >Back to list</button>
+
+  <div class="row">
+    <div class="col-6">
+      <form #form="ngForm" (ngSubmit)="addCategory()">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" name="name" [(ngModel)] ="addCategoriesRequest.name">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

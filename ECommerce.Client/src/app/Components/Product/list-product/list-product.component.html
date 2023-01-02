@@ -1,0 +1,67 @@
+<div class="container my-5">
+    <h1 class="mb-3">Products</h1>
+    <button type="button" class="btn btn-primary mb-3" routerLink="/product/add" routerLinkActive="active" >Add</button>
+    <mat-table [dataSource]="products" matSort>
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+      </ng-container>
+  
+      <!-- Progress Column -->
+      <ng-container matColumnDef="englishname">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> English Name </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.englishName}}</mat-cell>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="arabicName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Arabic Name </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.arabicName}} </mat-cell>
+      </ng-container>
+  
+            <!-- Name Column -->
+            <ng-container matColumnDef="category">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>Category </mat-header-cell>
+              <mat-cell *matCellDef="let row"> {{row.productCategory.name}} </mat-cell>
+            </ng-container>
+
+      <!-- Color Column -->
+      <ng-container matColumnDef="color">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Color </mat-header-cell>
+        <mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;">
+      </mat-row>
+    </mat-table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    <!-- <table class="table" >
+      <thead>
+        <tr>
+          <th>English Name</th>
+          <th>Arabic Name</th>
+          <th>category</th>
+          <th> </th>
+          <th> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{product.englishName}}</td>
+          <td>{{product.arabicName}}</td>
+          <td *ngIf="product.productCategory">{{product.productCategory.name}}</td>          
+          <td>          
+            <button type="button" class="btn btn-secondary" [routerLink]="['/product', 'edit', product.id]">Edit</button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-danger">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table> -->
+    
+    <p *ngIf="!products || products.length == 0">No Categories</p>

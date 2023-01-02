@@ -1,0 +1,27 @@
+<div class="container my-5">
+  <h1 class="mb-3">Categories</h1>
+  <button type="button" class="btn btn-primary mb-3" routerLink="/category/add" routerLinkActive="active" >Add</button>
+  <table class="table" *ngIf="categories && categories.length > 0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th> </th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let category of categories">
+        <td>{{category.id}}</td>
+        <td>{{category.name}}</td>
+        <td>          
+          <button type="button" class="btn btn-secondary" [routerLink]="['/category', 'edit', category.id]">Edit</button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p *ngIf="!categories || categories.length == 0">No Categories</p>
+</div>
